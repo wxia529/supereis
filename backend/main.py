@@ -1,14 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-from api.models import (  # noqa: F401
-    CircuitParseRequest,
-    CircuitParseResponse,
-    FitSingleRequest,
-    FitSingleResponse,
-)
 
-app = FastAPI()
+from api.routes import router
+
+app = FastAPI(title="EIS Engine")
 
 app.add_middleware(
     CORSMiddleware,
@@ -17,6 +13,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(router)
 
 
 @app.get("/health")
