@@ -1,6 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+from api.models import (  # noqa: F401
+    CircuitParseRequest,
+    CircuitParseResponse,
+    FitSingleRequest,
+    FitSingleResponse,
+)
 
 app = FastAPI()
 
